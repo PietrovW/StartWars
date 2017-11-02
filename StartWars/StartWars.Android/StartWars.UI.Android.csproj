@@ -120,9 +120,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StartWars\StartWars.csproj">
-      <Project>{c143e067-24a7-4b01-8402-7505f3058532}</Project>
-      <Name>StartWars</Name>
+    <ProjectReference Include="..\StartWars\StartWars.Core.csproj">
+      <Project>{838D4DB5-73E9-48E8-8F94-543144D4CAE4}</Project>
+      <Name>StartWars.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
