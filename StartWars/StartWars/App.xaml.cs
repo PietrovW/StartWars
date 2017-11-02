@@ -1,4 +1,11 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Ioc;
+
+using StartWars.Services.Navigation;
+using StartWars.Services.Navigation.Base;
+using StartWars.Startup;
+using StartWars.View.Menu;
+using StartWars.View.Pagets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +16,17 @@ namespace StartWars
 {
     public partial class App : Application
     {
+        private static ViewModelLocator _locator;
+        public static ViewModelLocator Locator
+        {
+            get
+            {
+                return _locator ?? (_locator = new ViewModelLocator());
+            }
+        }
+        public static ViewNavigationService navigationService { get; private set; }
         public App()
         {
-            InitializeComponent();
-
-            MainPage = new StartWars.MainPage();
         }
 
         protected override void OnStart()
