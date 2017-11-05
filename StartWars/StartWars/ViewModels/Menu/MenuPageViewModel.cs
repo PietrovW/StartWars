@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StartWars.ViewModels.Base;
+﻿using StartWars.ViewModels.Base;
 using System.Windows.Input;
-using StartWars.Services.Navigation.Base;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 using StartWars.Models.Menu;
 using Xamarin.Forms;
+using StartWars.Services.Navigation;
 
 namespace StartWars.ViewModels.Menu
 {
@@ -30,10 +25,10 @@ namespace StartWars.ViewModels.Menu
         public ICommand ItemSelectedCommand { get; set; }
         private RootPageViewModel rootPageViewModel;
        
-        public MenuPageViewModel(INavigationService navigationService) :base(navigationService)//RootPageViewModel rootPageViewModel)
+        public MenuPageViewModel(IViewNavigationService navigationService) :base(navigationService)//RootPageViewModel rootPageViewModel)
         {
            
-          //  this.rootPageViewModel = App.Locator.RootPageViewModel;
+          this.rootPageViewModel = App.ViewModelLocator.RootPageViewModel;
             ItemSelectedCommand = new RelayCommand(ItemSelectedMethod);
 
             // NavigationService.
@@ -45,11 +40,11 @@ namespace StartWars.ViewModels.Menu
             Items.Add(new NavigationMenuItem("Page2", ImageSource.FromResource("FirstXamarinApp.Home.png")));
         }
 
-        private async void ItemSelectedMethod()
+        private  void ItemSelectedMethod()
         {
             if (SelectedItem == Items[0])
             {
-             await NavigationService.InsertPageBeforeAsync("MainPage");
+             NavigationService.InsertPageBefore("MainPage");
                 // _NavigationService.NavigateTo(AppPages.MainPage);
                 ///var root = App.NavigationPage.Navigation.NavigationStack[0];
                 //  App.NavigationPage.Navigation.InsertPageBefore(new MainPage(), root);
@@ -57,7 +52,7 @@ namespace StartWars.ViewModels.Menu
             }
             if (SelectedItem == Items[1])
             {
-                await NavigationService.InsertPageBeforeAsync("SecondPage");
+                 NavigationService.InsertPageBefore("SecondPage");
                 //var root = App.NavigationPage.Navigation.NavigationStack[0];
                 // App.NavigationPage.Navigation.InsertPageBefore(new SecondPage(), root);
                 // await App.NavigationPage.PopToRootAsync(false);

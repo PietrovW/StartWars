@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
-using StartWars.Services.Navigation.Base;
+using StartWars.Services.Navigation;
 using StartWars.ViewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace StartWars.ViewModels.Pages
         public ICommand NavigateCommand { get; private set; }
         public ICommand NavigateCommand2 { get; private set; }
 
-        public MainPageViewModel(INavigationService navigationService):base(navigationService)
+        public MainPageViewModel(IViewNavigationService navigationService):base(navigationService)
         {
             NavigateCommand = new Command(() => Navigate());
             NavigateCommand2 = new Command(() => Navigate2());

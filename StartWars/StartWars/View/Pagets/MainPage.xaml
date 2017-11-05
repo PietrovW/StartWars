@@ -4,7 +4,7 @@
              x:Class="StartWars.View.Pagets.MainPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+            <Label Text="Welcome to Xamarin Forms MainPage!" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

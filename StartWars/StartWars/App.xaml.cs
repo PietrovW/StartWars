@@ -1,8 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
 
 using StartWars.Services.Navigation;
-using StartWars.Services.Navigation.Base;
-using StartWars.Startup;
+
 using StartWars.View.Menu;
 using StartWars.View.Pagets;
 using System;
@@ -16,17 +15,47 @@ namespace StartWars
 {
     public partial class App : Application
     {
-        private static ViewModelLocator _locator;
-        public static ViewModelLocator Locator
+        private static ViewModelLocator _viewModelLocator;
+        public static ViewModelLocator ViewModelLocator
         {
             get
             {
-                return _locator ?? (_locator = new ViewModelLocator());
+                return _viewModelLocator ?? (_viewModelLocator = new ViewModelLocator());
             }
         }
-        public static ViewNavigationService navigationService { get; private set; }
+        public static IViewNavigationService navigationService { get; private set; }
+
         public App()
         {
+            NavigationPage NavigationPage;
+            InitializeComponent();
+
+
+
+            if (!SimpleIoc.Default.IsRegistered<IViewNavigationService>())
+            {
+                navigationService = new ViewNavigationService();
+                navigationService.Configure(ViewModelLocator.MainPage, typeof(MainPage));
+                navigationService.Configure(ViewModelLocator.DetailsPage, typeof(DetailsPage));
+                navigationService.Configure(ViewModelLocator.RootPage, typeof(RootPage));
+                navigationService.Configure(ViewModelLocator.MenuPage, typeof(MenuPage));
+                navigationService.Configure(ViewModelLocator.SecondPage, typeof(SecondPage));
+
+                SimpleIoc.Default.Register<IViewNavigationService>(() => navigationService);
+            }
+            else
+                navigationService = SimpleIoc.Default.GetInstance<IViewNavigationService>();
+
+
+
+            NavigationPage = new NavigationPage(new MainPage());
+            navigationService.Initialize(NavigationPage);
+            RootPage rootPage = new RootPage();
+            MenuPage menuPage = new MenuPage();
+
+            rootPage.Master = menuPage;
+            rootPage.Detail = NavigationPage;
+            MainPage = rootPage;
         }
 
         protected override void OnStart()

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartWars.UI.Android", "StartWars\StartWars.Android\StartWars.UI.Android.csproj", "{F12F7B39-C0B2-4E69-A4C3-B58473DCED8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartWars.Core", "StartWars\StartWars\StartWars.Core.csproj", "{838D4DB5-73E9-48E8-8F94-543144D4CAE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartWars", "StartWars\StartWars\StartWars.csproj", "{838D4DB5-73E9-48E8-8F94-543144D4CAE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartWars.UI.UWP", "StartWars\StartWars.UWP\StartWars.UI.UWP.csproj", "{B0EE2012-5BFD-4B86-9F3C-DC6E8F018663}"
 EndProject

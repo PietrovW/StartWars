@@ -3,7 +3,7 @@ using Microsoft.Practices.ServiceLocation;
 using StartWars.ViewModels.Menu;
 using StartWars.ViewModels.Pages;
 
-namespace StartWars.Startup
+namespace StartWars
 {
     public class ViewModelLocator
     {
@@ -22,10 +22,7 @@ namespace StartWars.Startup
             SimpleIoc.Default.Register<RootPageViewModel>();
             SimpleIoc.Default.Register<MenuPageViewModel>();
             SimpleIoc.Default.Register<SecondPageViewModel>();
-
         }
-
-      
 
         public MainPageViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainPageViewModel>();
         public SecondPageViewModel DetailsViewModel => ServiceLocator.Current.GetInstance<SecondPageViewModel>();

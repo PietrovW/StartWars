@@ -152,7 +152,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StartWars\StartWars.Core.csproj">
+    <ProjectReference Include="..\StartWars\StartWars.csproj">
       <Project>{838D4DB5-73E9-48E8-8F94-543144D4CAE4}</Project>
       <Name>StartWars.Core</Name>
     </ProjectReference>

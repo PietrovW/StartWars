@@ -1,18 +1,18 @@
 ﻿using GalaSoft.MvvmLight;
-using StartWars.Services.Navigation.Base;
+using StartWars.Services.Navigation;
 using System.Collections.ObjectModel;
 
 namespace StartWars.ViewModels.Base
 {
     public abstract class BaseViewModel : ViewModelBase
     {
-        protected readonly INavigationService _navigationService;
+        protected readonly IViewNavigationService _navigationService;
 
         private bool _isLoading;
         private bool _isEnabled;
         private string _title;
         private ObservableCollection<string> _errors;
-        public INavigationService NavigationService => _navigationService;
+        public IViewNavigationService NavigationService => _navigationService;
         public bool IsLoading
         {
             get
@@ -62,7 +62,7 @@ namespace StartWars.ViewModels.Base
         }
 
 
-        public BaseViewModel(INavigationService navigationService)
+        public BaseViewModel(IViewNavigationService navigationService)
         {
             _navigationService = navigationService;
 

@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace StartWars.View.Pagets
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         public MainPage()
