@@ -14,10 +14,15 @@ namespace StartWars.Services.Rest
     public interface IRestService
     {
         Task<List<Film>> RefreshDataByFilmAsync();
+        Task<Film> GetFilmByTitleAsync(string title);
         Task<List<People>> RefreshDataByPeopleAsync();
+        Task<People> GetPeopleByNameAsync(string name);
         Task<List<Planet>> RefreshDataByPlanetleAsync();
+        Task<Planet> GetPlanetByNameAsync(string name);
         Task<List<Specie>> RefreshDataBySpecieleAsync();
+        Task<Specie> GetSpecieByNameAsync(string name);
         Task<List<Version>> RefreshDataByVersionAsync();
+        Task<Version> GetVersionByNameAsync(string name);
     }
     public class RestService : IRestService
     {
@@ -27,11 +32,35 @@ namespace StartWars.Services.Rest
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
         }
+
+        public Task<Film> GetFilmByTitleAsync(string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<People> GetPeopleByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Planet> GetPlanetByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Specie> GetSpecieByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Version> GetVersionByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<Film>> RefreshDataByFilmAsync()
         {
             var Items = new List<Film>();
-
-            // RestUrl = http://developer.xamarin.com:8081/api/todoitems
             var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
 
             try
@@ -51,24 +80,92 @@ namespace StartWars.Services.Rest
             return Items;
         }
 
-        public Task<List<People>> RefreshDataByPeopleAsync()
+        public async Task<List<People>> RefreshDataByPeopleAsync()
         {
-            throw new NotImplementedException();
+            var Items = new List<People>();
+            var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Items = JsonConvert.DeserializeObject<List<People>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return Items;
         }
 
-        public Task<List<Planet>> RefreshDataByPlanetleAsync()
+        public async Task<List<Planet>> RefreshDataByPlanetleAsync()
         {
-            throw new NotImplementedException();
+            var Items = new List<Planet>();
+            var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Items = JsonConvert.DeserializeObject<List<Planet>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return Items;
         }
 
-        public Task<List<Specie>> RefreshDataBySpecieleAsync()
+        public async Task<List<Specie>> RefreshDataBySpecieleAsync()
         {
-            throw new NotImplementedException();
+            var Items = new List<Specie>();
+            var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Items = JsonConvert.DeserializeObject<List<Specie>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return Items;
         }
 
-        public Task<List<Version>> RefreshDataByVersionAsync()
+        public async Task<List<Version>> RefreshDataByVersionAsync()
         {
-            throw new NotImplementedException();
+            var Items = new List<Version>();
+            var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Items = JsonConvert.DeserializeObject<List<Version>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return Items;
         }
     }
 }
