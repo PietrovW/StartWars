@@ -10,11 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace StartWars.View.Pagets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PlanetsDetailsPage : ContentPage
+    public partial class PlanetsPageDetail : ContentPage
     {
-        public PlanetsDetailsPage()
+        public PlanetsPageDetail()
         {
             InitializeComponent();
+            this.BindingContext = App.ViewModelLocator.PlanetsDetailsViewModel;
         }
     }
 }

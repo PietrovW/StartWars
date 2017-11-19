@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
 
 using StartWars.Services.Navigation;
-
+using StartWars.Services.Rest;
 using StartWars.View.Menu;
 using StartWars.View.Pagets;
 using System;
@@ -30,23 +30,22 @@ namespace StartWars
             NavigationPage NavigationPage;
             InitializeComponent();
 
-
-
             if (!SimpleIoc.Default.IsRegistered<IViewNavigationService>())
             {
                 navigationService = new ViewNavigationService();
                 navigationService.Configure(ViewModelLocator.MainPage, typeof(MainPage));
                 navigationService.Configure(ViewModelLocator.DetailsPage, typeof(DetailsPage));
-                navigationService.Configure(ViewModelLocator.RootPage, typeof(RootPage));
-                navigationService.Configure(ViewModelLocator.MenuPage, typeof(MenuPage));
+                navigationService.Configure(ViewModelLocator.PlanetsPageDetail, typeof(PlanetsPageDetail));
+                navigationService.Configure(ViewModelLocator.FilmsPage, typeof(FilmsPage));
+                // navigationService.Configure(ViewModelLocator.RootPage, typeof(RootPage));
+                //  navigationService.Configure(ViewModelLocator.MenuPage, typeof(MenuPage));
                 navigationService.Configure(ViewModelLocator.SecondPage, typeof(SecondPage));
 
                 SimpleIoc.Default.Register<IViewNavigationService>(() => navigationService);
+                SimpleIoc.Default.Register<IRestService>(() => new RestService());
             }
             else
                 navigationService = SimpleIoc.Default.GetInstance<IViewNavigationService>();
-
-
 
             NavigationPage = new NavigationPage(new MainPage());
             navigationService.Initialize(NavigationPage);

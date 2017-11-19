@@ -108,6 +108,9 @@
     <None Include="StartWars.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FodyWeavers.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />

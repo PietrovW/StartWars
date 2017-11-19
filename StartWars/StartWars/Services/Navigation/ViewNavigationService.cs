@@ -24,10 +24,9 @@ namespace StartWars.Services.Navigation
     {
         private readonly Dictionary<string, Type> _pagesByKey = new Dictionary<string, Type>();
         private NavigationPage _navigation;
-
         public Dictionary<string, Type> GetDictionary()
         {
-            return _pagesByKey;
+            return _pagesByKey.Where(item=>item.Key.Contains("Detail") ==false).ToDictionary(item => item.Key, item => item.Value);
         }
         public string CurrentPageKey
         {
@@ -47,7 +46,6 @@ namespace StartWars.Services.Navigation
                 }
             }
         }
-
         public void GoBack()
         {
             if (CanGoBack())
@@ -55,7 +53,6 @@ namespace StartWars.Services.Navigation
                 _navigation.PopAsync();
             }
         }
-
         public bool CanGoBack()
         {
             return _navigation.Navigation?.NavigationStack?.Count > 1;
@@ -73,8 +70,6 @@ namespace StartWars.Services.Navigation
             this._navigation.PopToRootAsync(false);
             //}
         }
-
-
         private Page GetPaget(string pageKey, object parameter=null)
         {
             lock (_pagesByKey)
@@ -133,8 +128,6 @@ namespace StartWars.Services.Navigation
                 }
             }
         }
-
-
         public void NavigateTo(string pageKey, object parameter)
         {
             lock (_pagesByKey)
@@ -192,7 +185,6 @@ namespace StartWars.Services.Navigation
                 }
             }
         }
-
         public void Configure(string pageKey, Type pageType)
         {
             lock (_pagesByKey)
@@ -207,7 +199,6 @@ namespace StartWars.Services.Navigation
                 }
             }
         }
-
         public void Initialize(NavigationPage navigation)
         {
             _navigation = navigation;

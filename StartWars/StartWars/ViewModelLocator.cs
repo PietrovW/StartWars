@@ -13,6 +13,8 @@ namespace StartWars
         public const string RootPage = "RootPage";
         public const string MenuPage = "MenuPage";
         public const string SecondPage = "SecondPage";
+        public const string PlanetsPageDetail = "PlanetsPageDetail";
+        public const string FilmsPage = "FilmsPage";
 
         static ViewModelLocator()
         {
@@ -22,11 +24,15 @@ namespace StartWars
             SimpleIoc.Default.Register<RootPageViewModel>();
             SimpleIoc.Default.Register<MenuPageViewModel>();
             SimpleIoc.Default.Register<SecondPageViewModel>();
+            SimpleIoc.Default.Register<PlanetsDetailsViewModel>();
+            SimpleIoc.Default.Register<FilmsPageViewModel>();
         }
 
         public MainPageViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainPageViewModel>();
-        public SecondPageViewModel DetailsViewModel => ServiceLocator.Current.GetInstance<SecondPageViewModel>();
         public RootPageViewModel RootPageViewModel => ServiceLocator.Current.GetInstance<RootPageViewModel>();
         public MenuPageViewModel MenuPageViewModel => ServiceLocator.Current.GetInstance<MenuPageViewModel>();
+        public SecondPageViewModel SecondPageViewModel => ServiceLocator.Current.GetInstance<SecondPageViewModel>();
+        public PlanetsDetailsViewModel PlanetsDetailsViewModel=> ServiceLocator.Current.GetInstance <PlanetsDetailsViewModel>();
+        public FilmsPageViewModel FilmsPageViewModel => ServiceLocator.Current.GetInstance<FilmsPageViewModel>();
     }
 }

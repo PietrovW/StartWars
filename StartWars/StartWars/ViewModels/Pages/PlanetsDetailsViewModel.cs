@@ -8,9 +8,9 @@ using StartWars.Services.Navigation;
 
 namespace StartWars.ViewModels.Pages
 {
-    public class FilmsViewModel : BaseViewModel
+    public class PlanetsDetailsViewModel : BaseViewModel
     {
-        public FilmsViewModel(IViewNavigationService navigationService) : base(navigationService)
+        public PlanetsDetailsViewModel(IViewNavigationService navigationService) : base(navigationService)
         {
         }
     }

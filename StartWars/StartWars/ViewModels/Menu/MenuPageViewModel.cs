@@ -27,36 +27,18 @@ namespace StartWars.ViewModels.Menu
        
         public MenuPageViewModel(IViewNavigationService navigationService) :base(navigationService)//RootPageViewModel rootPageViewModel)
         {
-           
           this.rootPageViewModel = App.ViewModelLocator.RootPageViewModel;
             ItemSelectedCommand = new RelayCommand(ItemSelectedMethod);
-
-            // NavigationService.
-            // foreach(var test in _NavigationService.GetDictionary())
-            //{
-            //  Items.Add(new MenusItem(test.Key, ImageSource.FromResource("FirstXamarinApp.Home.png")));
-            //}
-            Items.Add(new NavigationMenuItem("Home", ImageSource.FromResource("FirstXamarinApp.Home.png")));
-            Items.Add(new NavigationMenuItem("Page2", ImageSource.FromResource("FirstXamarinApp.Home.png")));
+           
+             foreach(var item in _navigationService.GetDictionary())
+            {
+              Items.Add(new NavigationMenuItem(item.Key, ImageSource.FromResource("StartWars.Home.png")));
+            }
         }
 
         private  void ItemSelectedMethod()
         {
-            if (SelectedItem == Items[0])
-            {
-             NavigationService.InsertPageBefore("MainPage");
-                // _NavigationService.NavigateTo(AppPages.MainPage);
-                ///var root = App.NavigationPage.Navigation.NavigationStack[0];
-                //  App.NavigationPage.Navigation.InsertPageBefore(new MainPage(), root);
-                //    await App.NavigationPage.PopToRootAsync(false);
-            }
-            if (SelectedItem == Items[1])
-            {
-                 NavigationService.InsertPageBefore("SecondPage");
-                //var root = App.NavigationPage.Navigation.NavigationStack[0];
-                // App.NavigationPage.Navigation.InsertPageBefore(new SecondPage(), root);
-                // await App.NavigationPage.PopToRootAsync(false);
-            }
+            NavigationService.InsertPageBefore(SelectedItem.Title);
             rootPageViewModel.IsPresented = false;
         }
     }

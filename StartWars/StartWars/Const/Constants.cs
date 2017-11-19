@@ -8,6 +8,6 @@ namespace StartWars.Const
 {
     public static class Constants
     {
-        public static string RestUrl = "http://swapi.co/api/{0}";
+        public static string RestUrl = "https://swapi.co/api/{0}";
     }
 }
