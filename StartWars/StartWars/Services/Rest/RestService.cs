@@ -1,15 +1,8 @@
-﻿using Newtonsoft.Json;
-using StartWars.Const;
+﻿using StartWars.Const;
 using StartWars.Data;
-using StartWars.Models;
 using StartWars.Pages;
 using StartWars.Tools;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace StartWars.Services.Rest
@@ -70,7 +63,7 @@ namespace StartWars.Services.Rest
 
         public async Task<RestResult<Planet>> RefreshDataByPlanetleAsync()
         {
-            var uri = new Uri(string.Format(Constants.RestUrl, "Planetles"));
+            var uri = new Uri(string.Format(Constants.RestUrl, "Planetles/"));
             return await GetUri<Planet>.ResponsAsync(uri);
         }
 

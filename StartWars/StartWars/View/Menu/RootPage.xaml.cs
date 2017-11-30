@@ -9,7 +9,7 @@ namespace StartWars.View.Menu
         public RootPage()
         {
             InitializeComponent();
-            this.BindingContext = App.ViewModelLocator.RootPageViewModel;
+            //this.BindingContext = App.ViewModelLocator.RootPageViewModel;
             MasterBehavior = MasterBehavior.Popover;
         }
     }

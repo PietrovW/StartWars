@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\Base\BehaviorBase.cs" />
     <Compile Include="Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="Const\Constants.cs" />
     <Compile Include="Data\Film.cs" />
@@ -45,6 +46,7 @@
     <Compile Include="Data\Planet.cs" />
     <Compile Include="Data\Specie.cs" />
     <Compile Include="Data\Vehicle.cs" />
+    <Compile Include="Messages\SampleMessage.cs" />
     <Compile Include="Models\Menu\FilmMenuItem.cs" />
     <Compile Include="Models\Pages\RestResult.cs" />
     <Compile Include="Services\Rest\RestService.cs" />
@@ -52,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Navigation\ViewNavigationService.cs" />
     <Compile Include="Tools\GetUrs.cs" />
+    <Compile Include="Utils\Config.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\Menu\MenuPageViewModel.cs" />

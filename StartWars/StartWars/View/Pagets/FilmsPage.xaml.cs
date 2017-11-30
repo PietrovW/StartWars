@@ -15,7 +15,6 @@ namespace StartWars.View.Pagets
         public FilmsPage()
         {
             InitializeComponent();
-            this.BindingContext = App.ViewModelLocator.FilmsPageViewModel;
         }
     }
 }

@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:b="clr-namespace:StartWars.Behaviors;assembly=StartWars"
-             x:Class="StartWars.View.Pagets.FilmsPage">
+             x:Class="StartWars.View.Pagets.FilmsPage"
+             BindingContext="{Binding Source={StaticResource Locator},Path=FilmsPageViewModel}"
+             >
     <StackLayout>
         <ListView x:Name="listView" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <ListView.Behaviors>
@@ -13,11 +15,9 @@
                 <ViewCell>
                         <Grid>
                             <Label Text="{Binding Title}" FontAttributes="Bold" />
-                            <Label Grid.Column="1" Text="{Binding Id}" />
-                            <Label Grid.Column="2" Text="{Binding Description}" HorizontalTextAlignment="End" />
+                            <Label Grid.Column="1" Text="{Binding Description}" HorizontalTextAlignment="End" />
                         </Grid>
                     </ViewCell>
-                
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -30,7 +30,6 @@ namespace StartWars.Tools
 
         public static async Task<RestResult<T>> ResponsAsync(Uri url)
         {
-
             try
             {
                 HttpResponseMessage httpResponseMessage =  Request(url);

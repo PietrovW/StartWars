@@ -2,5 +2,6 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StartWars.View.Menu.RootPage"
+                  BindingContext="{Binding Source={StaticResource Locator},Path=RootPageViewModel}"
              IsPresented="{Binding IsPresented, Mode=TwoWay}">
 </MasterDetailPage>

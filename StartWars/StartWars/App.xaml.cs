@@ -5,10 +5,6 @@ using StartWars.Services.Rest;
 using StartWars.View.Menu;
 using StartWars.View.Pagets;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Xamarin.Forms;
 
 namespace StartWars
@@ -37,8 +33,6 @@ namespace StartWars
                 navigationService.Configure(ViewModelLocator.DetailsPage, typeof(DetailsPage));
                 navigationService.Configure(ViewModelLocator.PlanetsPageDetail, typeof(PlanetsPageDetail));
                 navigationService.Configure(ViewModelLocator.FilmsPage, typeof(FilmsPage));
-                // navigationService.Configure(ViewModelLocator.RootPage, typeof(RootPage));
-                //  navigationService.Configure(ViewModelLocator.MenuPage, typeof(MenuPage));
                 navigationService.Configure(ViewModelLocator.SecondPage, typeof(SecondPage));
 
                 SimpleIoc.Default.Register<IViewNavigationService>(() => navigationService);
@@ -64,7 +58,8 @@ namespace StartWars
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            Application.Current.Properties["SleepDate"] = DateTime.Now.ToString("O");
+           // Application.Current.Properties["FirstName"] = _backgroundPage.FirstName;
         }
 
         protected override void OnResume()

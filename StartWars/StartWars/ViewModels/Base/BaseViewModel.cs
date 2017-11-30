@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using StartWars.Services.Navigation;
 using System.Collections.ObjectModel;
 
@@ -68,6 +69,18 @@ namespace StartWars.ViewModels.Base
 
             IsEnabled = true;
             IsLoading = false;
+        }
+        private IMessenger _messengerInstance;
+        public new IMessenger MessengerInstance
+        {
+            get
+            
+               => this._messengerInstance ?? Messenger.Default;
+            
+            set=>
+            
+                this._messengerInstance = value;
+            
         }
 
         public override void Cleanup()

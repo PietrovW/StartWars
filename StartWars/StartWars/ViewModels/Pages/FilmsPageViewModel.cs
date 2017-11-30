@@ -10,6 +10,8 @@ using StartWars.Models.Menu;
 using StartWars.Data;
 using StartWars.Services.Rest;
 using StartWars.Pages;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace StartWars.ViewModels.Pages
 {
@@ -22,23 +24,24 @@ namespace StartWars.ViewModels.Pages
             get { return _Items; }
             set { Set(() => Items, ref _Items, value); }
         }
-        private Film _SelectedItem;
-        public Film SelectedItem
+        private FilmMenuItem _SelectedItem;
+        public FilmMenuItem SelectedItem
         {
             get { return _SelectedItem; }
             set { Set(() => SelectedItem, ref _SelectedItem, value); }
         }
-
+        public ICommand ItemSelectedCommand { get; set; }
         public FilmsPageViewModel(IViewNavigationService navigationService, IRestService restService) : base(navigationService)
         {
             _restService = restService;
             this.Title = "Films";
             Loaute();
-
+            ItemSelectedCommand = new RelayCommand(ItemSelectedMethod);
 
         }
         private  void Loaute()
         {
+          
           var results= _restService.RefreshDataByFilmAsync().Result;
 
             foreach (var item in results.results)
@@ -49,6 +52,8 @@ namespace StartWars.ViewModels.Pages
 
         private void ItemSelectedMethod()
         {
+            var test = SelectedItem;
+             _navigationService.NavigateTo(ViewModelLocator.DetailsPage);
         }
     }
 }
